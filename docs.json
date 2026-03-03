@@ -1,122 +1,154 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Glyph",
+  "theme": "almond",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7C3AED",
+    "light": "#A78BFA",
+    "dark": "#5B21B6"
   },
-  "favicon": "/favicon.svg",
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/SidhuK/Glyph"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/SidhuK/Glyph"
+    }
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get Started",
             "pages": [
-              "index",
+              "introduction",
               "quickstart",
-              "development"
+              "installation"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Core Features",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "features/notes",
+              "features/markdown-editor",
+              "features/file-tree",
+              "features/daily-notes",
+              "features/wikilinks",
+              "features/tags-search"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Advanced Features",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "features/databases",
+              "features/task-management",
+              "features/ai-chat",
+              "features/attachments"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Workspace",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "workspace/spaces",
+              "workspace/settings",
+              "workspace/keyboard-shortcuts"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "AI Assistant",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
+              "ai/overview",
+              "ai/setup"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Providers",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "ai/providers/openai",
+              "ai/providers/anthropic",
+              "ai/providers/gemini",
+              "ai/providers/ollama",
+              "ai/providers/openrouter",
+              "ai/providers/codex"
+            ]
+          },
+          {
+            "group": "Usage",
+            "pages": [
+              "ai/chat-modes",
+              "ai/context-management",
+              "ai/profiles"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Development",
+        "groups": [
+          {
+            "group": "Architecture",
+            "pages": [
+              "development/architecture",
+              "development/tech-stack",
+              "development/space-system"
+            ]
+          },
+          {
+            "group": "Building",
+            "pages": [
+              "development/setup",
+              "development/building",
+              "development/testing"
+            ]
+          },
+          {
+            "group": "Backend",
+            "pages": [
+              "development/backend/tauri-commands",
+              "development/backend/indexing",
+              "development/backend/storage"
+            ]
+          },
+          {
+            "group": "Frontend",
+            "pages": [
+              "development/frontend/components",
+              "development/frontend/contexts",
+              "development/frontend/hooks"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Licensing",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "licensing/overview",
+              "licensing/activation",
+              "licensing/trial"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "licensing/faq",
+              "licensing/troubleshooting"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    ]
   }
 }

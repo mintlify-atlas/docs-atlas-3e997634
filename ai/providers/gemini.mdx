@@ -1,0 +1,231 @@
+---
+title: Google Gemini Configuration
+description: Set up Google Gemini models in Glyph
+---
+
+Connect Glyph to Google's Gemini API to use Gemini Pro, Gemini Flash, and other models.
+
+## Prerequisites
+
+- Google AI Studio account: [aistudio.google.com](https://aistudio.google.com)
+- API key (free tier available)
+
+## Setup
+
+<Steps>
+  <Step title="Get API Key">
+    1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+    2. Click **Get API key**
+    3. Create a new API key or use an existing one
+    4. Copy the key
+    
+    <Note>
+    Google AI Studio offers a free tier with generous limits for testing.
+    </Note>
+  </Step>
+  
+  <Step title="Open Glyph AI Settings">
+    Go to **Settings → AI** and select the **Gemini** profile.
+  </Step>
+  
+  <Step title="Add API Key">
+    1. Click **Set API Key** in the authentication section
+    2. Paste your Google API key
+    3. Click **Save**
+    
+    The key is stored in `.glyph/app/ai_secrets.json` in your space directory.
+  </Step>
+  
+  <Step title="Select Model">
+    Click the **Model** dropdown. Glyph fetches available models from Google's API.
+    
+    Popular models:
+    - `gemini-1.5-pro` - Most capable Gemini model
+    - `gemini-1.5-flash` - Fast and efficient
+    - `gemini-pro` - Original Gemini Pro
+  </Step>
+  
+  <Step title="Test Connection">
+    Open the AI panel and send a test message. You should receive a response from Gemini.
+  </Step>
+</Steps>
+
+## Configuration
+
+### Provider Settings
+
+- **Service**: `gemini`
+- **Base URL**: `https://generativelanguage.googleapis.com` (default)
+- **Authentication**: API key via query parameter
+
+### API Endpoint
+
+Glyph uses the `/v1beta/models` endpoint to list models and sends requests to the Gemini API.
+
+The API key is passed as a query parameter: `?key=YOUR_API_KEY`
+
+## Model Selection
+
+Glyph fetches the latest model list from Google's API.
+
+### Recommended Models
+
+| Model | Use Case | Context Window |
+|-------|----------|----------------|
+| `gemini-1.5-pro` | Complex reasoning, multimodal | 2M tokens |
+| `gemini-1.5-flash` | Fast tasks, high throughput | 1M tokens |
+| `gemini-pro` | General purpose | 32K tokens |
+
+<Note>
+**Gemini 1.5 Pro** has a **2 million token context window**, the largest of any production AI model. Attach entire codebases or books to your conversations.
+</Note>
+
+### Model Naming
+
+Google's API returns model names with a `models/` prefix (e.g., `models/gemini-1.5-pro`). Glyph automatically strips this prefix when displaying and selecting models.
+
+## Features
+
+### Chat Mode
+
+Conversational interaction:
+- Back-and-forth dialogue with Gemini
+- No file system access
+- Fast responses
+- Best for Q&A and brainstorming
+
+### Create Mode
+
+Gemini with workspace tools:
+- **read_file** - Read files from your space
+- **search_notes** - Search note content
+- **list_dir** - List directory contents
+- Tool usage tracked in timeline view
+- Best for research and knowledge retrieval
+
+### Context Attachment
+
+Leverage Gemini's massive context window:
+- Attach files or entire folders
+- Mention with `@filename` syntax
+- Configure character budget (up to 250K chars)
+- Gemini can handle extremely large contexts
+
+## API Usage and Billing
+
+### Free Tier
+
+Google AI Studio offers a generous free tier:
+- **Gemini 1.5 Flash**: 15 RPM, 1M TPM, 1,500 RPD
+- **Gemini 1.5 Pro**: 2 RPM, 32K TPM, 50 RPD
+
+RPM = requests per minute, TPM = tokens per minute, RPD = requests per day
+
+### Paid Tier (Pay-as-you-go)
+
+| Model | Input (per 1M tokens) | Output (per 1M tokens) |
+|-------|----------------------|------------------------|
+| Gemini 1.5 Flash | $0.075 | $0.30 |
+| Gemini 1.5 Pro (≤128K) | $1.25 | $5.00 |
+| Gemini 1.5 Pro (>128K) | $2.50 | $10.00 |
+
+Check current pricing at [ai.google.dev/pricing](https://ai.google.dev/pricing).
+
+## Rate Limits
+
+Rate limits depend on your tier and model:
+- Free tier: See limits above
+- Paid tier: Higher limits, see Google AI documentation
+
+If you hit rate limits, Glyph displays the error. Wait before retrying or upgrade to paid tier.
+
+## Troubleshooting
+
+### "API key not set for this profile"
+
+**Solution**: Add your Google API key in Settings → AI.
+
+### "model list failed (400)"
+
+**Possible causes**:
+- Invalid API key
+- API key doesn't have permission for Gemini API
+
+**Solution**: Create a new API key from [AI Studio](https://aistudio.google.com/app/apikey).
+
+### "model list failed (429)"
+
+**Solution**: You've hit Google's rate limit. Wait before retrying or check your quota.
+
+### Model list is empty
+
+**Solution**: Type the model ID manually:
+- `gemini-1.5-pro`
+- `gemini-1.5-flash`
+- `gemini-pro`
+
+**Do not** include the `models/` prefix.
+
+### "The model: `models/gemini-1.5-pro` does not exist"
+
+**Cause**: You included the `models/` prefix in the model field.
+
+**Solution**: Use just `gemini-1.5-pro` without the prefix. Glyph handles the prefix internally.
+
+### Responses are slow with large context
+
+**Cause**: While Gemini supports huge contexts (2M tokens), processing them takes time.
+
+**Solution**: 
+- Use `gemini-1.5-flash` for faster responses
+- Reduce context size if not all content is necessary
+- Be patient; processing 100K+ tokens may take 10-30 seconds
+
+## Multimodal Support
+
+Gemini models support text, image, audio, and video inputs. However, Glyph currently only supports text inputs and outputs.
+
+Image and multimodal support may be added in a future release.
+
+## Security Best Practices
+
+<Warning>
+- Never commit `.glyph/app/ai_secrets.json` to version control
+- Rotate API keys if exposed
+- Monitor usage in [Google Cloud Console](https://console.cloud.google.com)
+- Set up billing alerts if using paid tier
+</Warning>
+
+## Gemini-Specific Tips
+
+### Large Context Use Cases
+
+Gemini's 2M token context enables unique workflows:
+- Attach entire project directories
+- Include multiple books or research papers
+- Provide comprehensive context for analysis
+
+### System Instructions
+
+Gemini respects system prompts. In create mode, Glyph adds tool usage guidelines to reduce unnecessary searches.
+
+### Thinking Models
+
+Google may release reasoning models (similar to OpenAI's o1). When available, they'll appear in Glyph's model list automatically.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Chat Modes" icon="messages" href="/ai/chat-modes">
+    Learn about chat vs create modes
+  </Card>
+  <Card title="Context Management" icon="folder" href="/ai/context-management">
+    Attach large contexts with Gemini's 2M token window
+  </Card>
+  <Card title="Anthropic" icon="robot" href="/ai/providers/anthropic">
+    Compare with Claude models
+  </Card>
+  <Card title="Profiles" icon="user-group" href="/ai/profiles">
+    Manage multiple AI profiles
+  </Card>
+</CardGroup>
