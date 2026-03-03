@@ -1,0 +1,175 @@
+{
+  "projectType": "saas",
+  "projectName": "Glyph",
+  "projectDescription": "Offline-first desktop notes app with AI chat, databases, and task management built with Tauri and React",
+  "theme": "almond",
+  "primaryColor": "#7C3AED",
+  "lightColor": "#A78BFA",
+  "darkColor": "#5B21B6",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "installation"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/notes",
+              "features/markdown-editor",
+              "features/file-tree",
+              "features/daily-notes",
+              "features/wikilinks",
+              "features/tags-search"
+            ]
+          },
+          {
+            "group": "Advanced Features",
+            "pages": [
+              "features/databases",
+              "features/task-management",
+              "features/ai-chat",
+              "features/attachments"
+            ]
+          },
+          {
+            "group": "Workspace",
+            "pages": [
+              "workspace/spaces",
+              "workspace/settings",
+              "workspace/keyboard-shortcuts"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "AI Assistant",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "ai/overview",
+              "ai/setup"
+            ]
+          },
+          {
+            "group": "Providers",
+            "pages": [
+              "ai/providers/openai",
+              "ai/providers/anthropic",
+              "ai/providers/gemini",
+              "ai/providers/ollama",
+              "ai/providers/openrouter",
+              "ai/providers/codex"
+            ]
+          },
+          {
+            "group": "Usage",
+            "pages": [
+              "ai/chat-modes",
+              "ai/context-management",
+              "ai/profiles"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Development",
+        "groups": [
+          {
+            "group": "Architecture",
+            "pages": [
+              "development/architecture",
+              "development/tech-stack",
+              "development/space-system"
+            ]
+          },
+          {
+            "group": "Building",
+            "pages": [
+              "development/setup",
+              "development/building",
+              "development/testing"
+            ]
+          },
+          {
+            "group": "Backend",
+            "pages": [
+              "development/backend/tauri-commands",
+              "development/backend/indexing",
+              "development/backend/storage"
+            ]
+          },
+          {
+            "group": "Frontend",
+            "pages": [
+              "development/frontend/components",
+              "development/frontend/contexts",
+              "development/frontend/hooks"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Licensing",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "licensing/overview",
+              "licensing/activation",
+              "licensing/trial"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "licensing/faq",
+              "licensing/troubleshooting"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Offline-first note-taking with markdown editor",
+    "AI chat with multiple provider support (OpenAI, Anthropic, Gemini, Ollama)",
+    "Database views with table and board layouts",
+    "Task management with inbox, today, and upcoming views",
+    "Daily notes with automatic creation",
+    "Wikilinks and backlinks for note connections",
+    "Full-text search and tag filtering",
+    "File attachments and previews",
+    "SQLite-based indexing for fast search"
+  ],
+  "publicApiSurface": [
+    "space_create",
+    "space_open",
+    "space_list_dir",
+    "space_read_text",
+    "space_write_text",
+    "note_create",
+    "note_read",
+    "note_write",
+    "database_load",
+    "database_save_config",
+    "tasks_query",
+    "task_set_checked",
+    "search",
+    "search_advanced",
+    "tags_list",
+    "ai_chat_start",
+    "ai_profiles_list",
+    "ai_models_list",
+    "license_activate",
+    "license_bootstrap_status"
+  ]
+}
