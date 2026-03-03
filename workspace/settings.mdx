@@ -3,7 +3,14 @@ title: Settings
 description: Configure Glyph's appearance, AI providers, and workspace preferences
 ---
 
-Glyph's settings are organized into five main categories, each accessible from the settings window (`Cmd+,` or `Ctrl+,`).
+Glyph's settings are organized into several categories, each accessible from the settings window (`Cmd+,` or `Ctrl+,`):
+
+- **AI Settings** - Configure AI providers and models
+- **Appearance** - Customize theme, colors, and fonts
+- **Space Settings** - Manage current workspace
+- **Daily Notes** - Configure daily note creation
+- **General** - AI assistant defaults and licensing
+- **About** - App version and updates
 
 ## Opening Settings
 
@@ -95,17 +102,21 @@ Select an accent color that appears in:
 
 Available accents:
 - Neutral (default gray)
-- Red, Orange, Yellow
-- Green, Emerald, Teal
-- Cyan, Blue, Indigo
-- Violet, Purple, Pink
+- Cerulean (blue)
+- Tropical Teal
+- Light Yellow
+- Soft Apricot
+- Vibrant Coral
 
 ```typescript
 // From src/lib/settings.ts
 export type UiAccent =
-  | "neutral" | "red" | "orange" | "yellow"
-  | "green" | "emerald" | "teal" | "cyan"
-  | "blue" | "indigo" | "violet" | "purple" | "pink";
+  | "neutral"
+  | "cerulean"
+  | "tropical-teal"
+  | "light-yellow"
+  | "soft-apricot"
+  | "vibrant-coral";
 ```
 
 ### Typography
